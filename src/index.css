@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    --background: 40 33% 98%;
+    --foreground: 30 10% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 30 10% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 10% 15%;
+
+    --primary: 24 95% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 30% 94%;
+    --secondary-foreground: 30 10% 25%;
+
+    --muted: 40 20% 92%;
+    --muted-foreground: 30 10% 45%;
+
+    --accent: 24 80% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 40 20% 88%;
+    --input: 40 20% 88%;
+    --ring: 24 95% 60%;
+
+    --radius: 1rem;
+
+    /* Note colors - pastels */
+    --note-default: 0 0% 100%;
+    --note-yellow: 48 100% 90%;
+    --note-green: 140 60% 88%;
+    --note-blue: 210 80% 90%;
+    --note-pink: 340 80% 92%;
+    --note-purple: 270 60% 92%;
+    --note-orange: 30 100% 90%;
+    --note-teal: 175 60% 88%;
+    --note-red: 0 70% 92%;
+
+    /* Shadows */
+    --shadow-note: 0 2px 8px hsl(30 20% 20% / 0.08);
+    --shadow-note-hover: 0 4px 16px hsl(30 20% 20% / 0.12);
+    --shadow-fab: 0 4px 20px hsl(24 95% 40% / 0.3);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 15% 10%;
+    --foreground: 40 20% 95%;
+
+    --card: 30 15% 14%;
+    --card-foreground: 40 20% 95%;
+
+    --popover: 30 15% 14%;
+    --popover-foreground: 40 20% 95%;
+
+    --primary: 24 95% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 30 15% 18%;
+    --secondary-foreground: 40 20% 90%;
+
+    --muted: 30 15% 20%;
+    --muted-foreground: 40 15% 60%;
+
+    --accent: 24 80% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 30 15% 22%;
+    --input: 30 15% 22%;
+    --ring: 24 95% 60%;
+
+    --note-default: 30 15% 18%;
+    --note-yellow: 48 40% 25%;
+    --note-green: 140 30% 22%;
+    --note-blue: 210 35% 25%;
+    --note-pink: 340 35% 28%;
+    --note-purple: 270 30% 28%;
+    --note-orange: 30 50% 25%;
+    --note-teal: 175 30% 22%;
+    --note-red: 0 35% 28%;
+
+    --shadow-note: 0 2px 8px hsl(0 0% 0% / 0.3);
+    --shadow-note-hover: 0 4px 16px hsl(0 0% 0% / 0.4);
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Nunito', sans-serif;
+  }
+}
+
+@layer utilities {
+  .note-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1rem;
+  }
+
+  .note-shadow {
+    box-shadow: var(--shadow-note);
+  }
+
+  .note-shadow-hover {
+    box-shadow: var(--shadow-note-hover);
+  }
+
+  .fab-shadow {
+    box-shadow: var(--shadow-fab);
+  }
+}
+
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  70% {
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+.animate-pop-in {
+  animation: pop-in 0.25s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.4s ease-out forwards;
+}
